@@ -1,0 +1,22 @@
+.Homepage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    height: 100px;
+    
+    h1{
+        font-size: xx-large;
+        background: linear-gradient(to right, #217bfe, #e55);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+    
+    a{
+        padding: 15px 25px;
+        background-color: #217bfe;
+        color: azure;
+        border-radius: 20px;
+    }
+}
