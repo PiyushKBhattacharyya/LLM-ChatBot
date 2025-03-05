@@ -3,6 +3,8 @@ import './newPrompt.css';
 import Upload from '../upload/Upload';
 import { IKImage } from 'imagekitio-react';
 import model from "../../lib/gemini";
+import Markdown from 'react-markdown'
+
 
 const NewPrompt = () => {
   const [question, setQuestion] = useState("");
@@ -10,8 +12,16 @@ const NewPrompt = () => {
   const [img, setImg] = useState({
     isLoading: false,
     error: "",
-    dbData: {}
+    dbData: {},
+    aiData: {},
   });
+
+  const chat = model.startChat({
+    history: [],
+    generationConfig: {
+      // maxOutputTokens: 100,
+    }
+  })
 
   const endRef = useRef(null);
 
@@ -19,15 +29,23 @@ const NewPrompt = () => {
     if (endRef.current) {
       endRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  }, [question, answer]);
+  }, [question, answer, img.dbData]);
 
   const add = async (text) => {
     setQuestion(text);
 
     try {
-      const result = await model.generateContent(text);
-      const response = await result.response;
-      setAnswer(await response.text());
+      const result = await chat.sendMessageStream(
+        Object.entries(img.aiData).length ? [img.aiData, text] : [text]
+    );
+    let accumulateText = "";
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      console.log(chunkText);
+      accumulateText += chunkText
+      setAnswer(accumulateText);
+    }  
+    
     } catch (error) {
       console.error("Error generating response:", error);
       setAnswer("An error occurred. Please try again.");
@@ -57,7 +75,7 @@ const NewPrompt = () => {
       )}
 
       {question && <div className="message user">{question}</div>}
-      {answer && <div className="message">{answer}</div>}
+      {answer && <div className="message"><Markdown>{answer}</Markdown></div>}
 
       <div className="endchat" ref={endRef} />
 

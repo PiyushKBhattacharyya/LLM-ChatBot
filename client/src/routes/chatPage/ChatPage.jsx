@@ -10,9 +10,6 @@ const ChatPage = () => {
     <div className='chatPage'>
       <div className="wrapper">
         <div className="chat">
-          <div className="message">Message</div>
-          <div className="message user">Message from user</div>
-          <div className="message">Message</div>
           <NewPrompt />
         </div>
       </div>
