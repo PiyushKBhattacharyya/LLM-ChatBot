@@ -3,9 +3,12 @@ import './homepage.css'
 
 const Homepage = () => {
   return (
-    <div className='Homepage'>
-      <h1>LLM ChatBot</h1>
-      <Link to='/dashboard'>Get Started</Link>
+    <div className='homepage'>
+      <div className="main">
+        <h1>LLM Chat-Bot</h1>
+        <h2>Chat with our LLM chat-bot and explore the possibilities of AI!</h2>
+        <Link to='/dashboard'>Get Started</Link>
+      </div>
     </div>
   )
 }

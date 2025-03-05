@@ -1,22 +1,35 @@
-.Homepage{
+.homepage{
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 100px;
-    height: 100px;
-    
-    h1{
-        font-size: xx-large;
-        background: linear-gradient(to right, #217bfe, #e55);
-        background-clip: text;
-        -webkit-background-clip: text;
-        color: transparent;
-    }
-    
-    a{
-        padding: 15px 25px;
-        background-color: #217bfe;
-        color: azure;
-        border-radius: 20px;
+    height: 100%;
+
+    .main{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-items: center;
+        gap: 16px;
+        text-align: center;
+
+        h1{
+            font-size: 128px;
+            background: linear-gradient(to right, #217bfe, rgb(218, 218, 218));
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        h2{
+            font-weight: 400;
+            max-width: 70%;
+        }
+        a{
+            padding: 15px 25px;
+            background-color: #217bfe;
+            color: whitesmoke;
+            border-radius: 20px;
+            font-size: 14px;
+        }
     }
 }
