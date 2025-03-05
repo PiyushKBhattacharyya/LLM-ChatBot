@@ -13,8 +13,6 @@ const ChatPage = () => {
           <div className="message">Message</div>
           <div className="message user">Message from user</div>
           <div className="message">Message</div>
-          
-
           <NewPrompt />
         </div>
       </div>

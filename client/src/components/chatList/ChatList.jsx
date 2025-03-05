@@ -9,42 +9,7 @@ const ChatList = () => {
         <hr />
         <span className='title'>RECENT CHATS</span>
         <div className="list">
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
-            <Link to='/'>New Chat</Link>
+            
         </div>
         <hr />
         <div className="footer">
