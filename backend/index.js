@@ -4,13 +4,21 @@ import ImageKit from "imagekit";
 import mongoose from "mongoose";
 import UserChats from "./models/userChats.js"
 import Chat from "./models/chat.js";
+import { requireAuth } from '@clerk/express';
 
 const port = process.env.PORT || 3000;
 const app = express();
+const legacyRequireAuth = (req, res, next) => {
+    if (!req.auth.userId) {
+      return next(new Error('Unauthenticated'))
+    }
+    next()
+  }
 
 app.use(
     cors({
         origin: process.env.CLIENT_URL,
+        credentials: true,
     })
 );
 
@@ -20,7 +28,7 @@ const connect = async ()=>{
     try{
         await mongoose.connect(process.env.MONGO)
         console.log("Connected to MongoDB")
-    }catch(err){
+    } catch(err) {
         console.log(err);
     }
 }
@@ -36,7 +44,7 @@ app.get('/api/upload', (req,res)=>{
     res.send(result);
 });
 
-app.post('/api/chats', async (req,res)=>{
+app.post('/api/chats', legacyRequireAuth, async (req,res)=>{
     const { userId, text } = req.body
     try{
         const newChat = new Chat({
@@ -76,6 +84,11 @@ app.post('/api/chats', async (req,res)=>{
         console.log(err)
         res.status(500).send("error creating chat")
     }
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(401).send('Unauthenticated!');
 });
 
 app.listen(port, ()=>{

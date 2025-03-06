@@ -1,6 +1,13 @@
 import { Link, Outlet } from 'react-router-dom'
 import './rootLayout.css'
-import { ClerkProvider, SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import { ClerkProvider, SignedIn, UserButton } from '@clerk/clerk-react'
+import {
+  useQuery,
+  useMutation,
+  useQueryClient,
+  QueryClient,
+  QueryClientProvider,
+} from '@tanstack/react-query'
 
 
 // Import your Publishable Key
@@ -10,24 +17,28 @@ if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key")
 }
 
+const queryClient = new QueryClient()
+
 const RootLayout = () => {
   return (
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-      <div className='rootLayout'>
-          <header>
-              <Link to='/'>
-                  <span>LLM ChatBot</span>
-              </Link>
-              <div className="user">
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
-              </div>
-          </header>
-          <main>
-              <Outlet/>
-          </main>
-      </div>
+      <QueryClientProvider client={queryClient}>
+        <div className='rootLayout'>
+            <header>
+                <Link to='/'>
+                    <span>LLM ChatBot</span>
+                </Link>
+                <div className="user">
+                  <SignedIn>
+                    <UserButton />
+                  </SignedIn>
+                </div>
+            </header>
+            <main>
+                <Outlet/>
+            </main>
+        </div>
+      </QueryClientProvider>
     </ClerkProvider>
   )
 }
