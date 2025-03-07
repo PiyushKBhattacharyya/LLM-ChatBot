@@ -10,14 +10,8 @@ COPY package*.json ./
 # Install all dependencies (including devDependencies for nodemon)
 RUN npm install --legacy-peer-deps
 
-# Copy the rest of the application
-COPY . .
-
-# Set the environment file
-COPY .env .env
-
 # Expose the backend port
-EXPOSE 5000
+EXPOSE 3000
 
 # Start the server with nodemon
-CMD ["sh", "-c", "export $(cat .env | xargs) && npm start"]
+CMD ["npm", "run", "start"]

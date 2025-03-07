@@ -5,9 +5,6 @@ import mongoose from "mongoose";
 import UserChats from "./models/userChats.js"
 import Chat from "./models/chat.js";
 import { requireAuth } from '@clerk/express';
-import dotenv from 'dotenv';
-
-dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -36,10 +33,6 @@ const imagekit = new ImageKit({
     privateKey: process.env.IMAGE_KIT_PRIVATE_KEY,
 });
 
-app.get("/", (req, res) => {
-  res.send("Backend is working!");
-});
-
 app.get('/api/upload', (req,res)=>{
     const result = imagekit.getAuthenticationParameters();
     res.send(result);
@@ -50,18 +43,15 @@ app.post('/api/chats', requireAuth(), async (req,res)=>{
     const { text } = req.body;
   
     try {
-      // CREATE A NEW CHAT
       const newChat = new Chat({
         userId: userId,
         history: [{ role: "user", parts: [{ text }] }],
       });
   
       const savedChat = await newChat.save();
-  
-      // CHECK IF THE USERCHATS EXISTS
+
       const userChats = await UserChats.find({ userId: userId });
-  
-      // IF DOESN'T EXIST CREATE A NEW ONE AND ADD THE CHAT IN THE CHATS ARRAY
+
       if (!userChats.length) {
         const newUserChats = new UserChats({
           userId: userId,
@@ -75,7 +65,6 @@ app.post('/api/chats', requireAuth(), async (req,res)=>{
   
         await newUserChats.save();
       } else {
-        // IF EXISTS, PUSH THE CHAT TO THE EXISTING ARRAY
         await UserChats.updateOne(
           { userId: userId },
           {
