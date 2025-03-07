@@ -26,7 +26,7 @@ const NewPrompt = ({data}) => {
   })
 
   const endRef = useRef(null);
-  const fornRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     if (endRef.current) {
@@ -129,11 +129,11 @@ const NewPrompt = ({data}) => {
       {answer && <div className="message"><Markdown>{answer}</Markdown></div>}
 
       <div className="endchat" ref={endRef} />
-
-      <form className="newForm" onSubmit={handleSubmit} ref={fornRef}>
+      <form className="newForm" onSubmit={handleSubmit} ref={formRef}>
         <Upload setImg={setImg} />
         <input id='file' type="file" multiple={false} hidden />
         <input type="text" name="text" placeholder="Ask Me Anything!" />
+
         <button type="submit">
           <img src="/arrow.png" alt="" />
         </button>
