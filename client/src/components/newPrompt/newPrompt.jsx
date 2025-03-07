@@ -42,7 +42,12 @@ const NewPrompt = ({data}) => {
     `;
 
   const chat = model.startChat({
-    history: [],
+    history: [
+      data?.history.map(({role, parts}) => ({
+        role, 
+        parts:[{text:parts[0].text}]
+      }))
+    ],
     systemInstruction: { role: "system", parts: [{ text: systemPrompt }] }, 
     generationConfig: {
       temperature: 0.5,

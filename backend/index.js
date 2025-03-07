@@ -5,6 +5,9 @@ import mongoose from "mongoose";
 import UserChats from "./models/userChats.js"
 import Chat from "./models/chat.js";
 import { requireAuth } from '@clerk/express';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -31,6 +34,10 @@ const imagekit = new ImageKit({
     urlEndpoint: process.env.IMAGE_KIT_ENDPOINT,
     publicKey: process.env.IMAGE_KIT_PUBLIC_KEY,
     privateKey: process.env.IMAGE_KIT_PRIVATE_KEY,
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend is working!");
 });
 
 app.get('/api/upload', (req,res)=>{
