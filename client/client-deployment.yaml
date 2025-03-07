@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: client
-          image: piyush927/llm-chatbot-client:latest
+          image: piyush927/llm-chatbot-backend-1
           ports:
             - containerPort: 5173
           envFrom:
