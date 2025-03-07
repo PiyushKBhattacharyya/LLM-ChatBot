@@ -1,14 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import './rootLayout.css'
 import { ClerkProvider, SignedIn, UserButton } from '@clerk/clerk-react'
-import {
-  useQuery,
-  useMutation,
-  useQueryClient,
-  QueryClient,
-  QueryClientProvider,
-} from '@tanstack/react-query'
-
+import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query'
 
 // Import your Publishable Key
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
