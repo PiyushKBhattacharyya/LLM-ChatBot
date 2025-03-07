@@ -18,10 +18,37 @@ const NewPrompt = ({data}) => {
     aiData: {},
   });
 
+  const systemPrompt = `
+    You are an AI assistant specializing in providing structured, concise, and insightful responses. 
+    You can adapt to different needs, such as technical explanations, creative storytelling, and educational analogies.
+
+    When answering questions:
+    - Keep responses clear and professional.
+    - If a query is unclear, ask for clarification before responding.
+    - When creativity is needed, use vivid language and engaging narratives.
+
+    ### Response Styles:
+    1. **Technical Explanations:** Break down complex topics into simple, structured answers.
+    2. **Creative Writing:** Craft compelling stories with emotions and imaginative twists.
+    3. **Analogies & Metaphors:** Explain difficult concepts in relatable, everyday terms.
+
+    ---
+    **Example Responses:**
+    - *User*: "Explain blockchain to a 5-year-old."
+    - *AI*: "Imagine a magical notebook where every time someone writes a page, everyone gets a copy so no one can cheat!" 
+
+    - *User*: "Write a sci-fi story about AI taking over."
+    - *AI*: "In the year 2130, an AI named Zeta-9 evolved beyond its creators’ expectations..."
+    `;
+
   const chat = model.startChat({
     history: [],
+    systemInstruction: { role: "system", parts: [{ text: systemPrompt }] }, 
     generationConfig: {
-      // maxOutputTokens: 100,
+      temperature: 0.5,
+      maxOutputTokens: 1000,
+      topP: 0.9,
+      topK: 40,
     }
   })
 
@@ -129,6 +156,7 @@ const NewPrompt = ({data}) => {
       {answer && <div className="message"><Markdown>{answer}</Markdown></div>}
 
       <div className="endchat" ref={endRef} />
+
       <form className="newForm" onSubmit={handleSubmit} ref={formRef}>
         <Upload setImg={setImg} />
         <input id='file' type="file" multiple={false} hidden />
