@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: backend-config
-data:
-  CLIENT_URL: "http://localhost:5173"
-  PORT: "3000"

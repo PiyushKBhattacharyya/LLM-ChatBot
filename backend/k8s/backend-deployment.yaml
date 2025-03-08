@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: backend-deployment
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
       app: backend
@@ -22,16 +22,11 @@ spec:
                 name: backend-config
             - secretRef:
                 name: backend-secrets
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: backend-service
-spec:
-  selector:
-    app: backend
-  ports:
-    - protocol: TCP
-      port: 3000
-      targetPort: 3000
-  type: NodePort
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+        

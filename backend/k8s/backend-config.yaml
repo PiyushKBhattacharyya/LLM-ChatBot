@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+data:
+  CLIENT_URL: "http://backend-service.default.svc.cluster.local"
+  PORT: "3000"
