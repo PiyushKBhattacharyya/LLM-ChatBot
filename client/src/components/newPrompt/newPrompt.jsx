@@ -93,18 +93,18 @@ import { useEffect, useRef, useState } from 'react';
      const history = data?.history?.length
      ? data.history.map(({ role, parts }) => ({
          role,
-         parts: [{ text: parts?.[0]?.text || "" }], // Ensure parts[0].text exists
+         parts: [{ text: parts?.[0]?.text || "" }],
        }))
-     : [{ role: "user", parts: [{ text: "Hello! How can I assist you?" }] }]; // Default fallback
+     : [{ role: "user", parts: [{ text: "Hello! How can I assist you?" }] }];
    
-   console.log("Processed Chat History:", history); // Debugging
+   console.log("Processed Chat History:", history);
    const chat = model.startChat({
     history, 
     systemInstruction: { role: "system", parts: [{ text: systemPrompt }] }, 
     generationConfig: {
        // maxOutputTokens: 100,
        temperature: 0.5,
-       maxOutputTokens: 1000,
+       maxOutputTokens: 2000,
        topP: 0.9,
        topK: 40,
      }
