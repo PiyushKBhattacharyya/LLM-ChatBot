@@ -33,14 +33,29 @@ This setup ensures seamless scalability and high availability.
    - **Database:** MongoDB Atlas  
    - **Authentication:** Clerk  
    - **LLM API:** Gemini API  
-   - **Containerization & Deployment:** Docker, Kubernetes  
+   - **Containerization & Deployment:** Docker, Kubernetes
 
-2. **Why React 19?**  
-   - React 19 provides enhanced performance and better state management, making the chatbot more responsive.  
+2. **Why Node.js and Express?**
+   - Node.js is event-driven, making it great for handling multiple requests simultaneously.
+   - Express provides a minimalistic framework with middleware support, making it easy to build APIs.
 
-3. **Why Clerk for Authentication?**  
+4. **Why React 19 and Vite?**  
+   - React 19 provides enhanced performance and better state management, making the chatbot more responsive.
+   - Vite provides lightning-fast development with instant HMR (Hot Module Replacement).
+
+5. **Why Clerk for Authentication?**  
    - Clerk simplifies authentication with prebuilt UI components, reducing development overhead while maintaining security.  
 
+6. **Why MongoDB Atlas?**
+   - MongoDB's NoSQL structure allows for flexible schema design and horizontal scaling.
+   - MongoDB Atlas handles backups, security, and scaling automatically.
+
+7. **Why Gemini Api?**
+   - Gemini Api can work efficiently for both image and text data.
+
+8. **Why Docker and Kubernetes?**
+   - Docker ensures that the app runs consistently across different environments.
+   - Kubernetes handles auto-scaling, load balancing, and zero-downtime deployments.
 ---
 
 ## Deployment Instructions
@@ -115,6 +130,7 @@ Clone the repository using
 ```sh
 gh repo clone PiyushKBhattacharyya/LLM-ChatBot
 ```
+
 #### **2. Setup Environment Variables**
 Follow the same steps as in the "Deployment without Docker" section to create ```sh .env``` files in both backend and frontend directories.
 
