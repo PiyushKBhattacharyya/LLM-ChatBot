@@ -1,8 +1,8 @@
-# LLM Chatbot with Gemini API, Clerk, and MongoDB Atlas
+# Full Stack LLM Chatbot
 
 ## Overview
 
-This project is a scalable, production-ready LLM chatbot powered by Google's Gemini API, integrated with Clerk for authentication and MongoDB Atlas for database management. The frontend is built with React 19, and the backend runs on Node.js with Express. The system leverages prompt engineering to enhance chatbot responses.
+This project was a part of the intern recruitment process for Sarvam AI. The project is a scalable, production-ready LLM chatbot powered by Google's Gemini API, integrated with Clerk for authentication and MongoDB Atlas for database management. The frontend is built with React 19, and the backend runs on Node.js with Express. The system leverages prompt engineering to enhance chatbot responses.
 
 ## Overall Approach and Design Philosophy
 
