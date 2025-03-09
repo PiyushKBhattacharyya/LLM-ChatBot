@@ -104,7 +104,7 @@ import { useEffect, useRef, useState } from 'react';
     generationConfig: {
        // maxOutputTokens: 100,
        temperature: 0.5,
-       maxOutputTokens: 2000,
+       maxOutputTokens: 2048,
        topP: 0.9,
        topK: 40,
      }
