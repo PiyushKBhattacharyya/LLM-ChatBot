@@ -13,6 +13,12 @@ This project was a part of the intern recruitment process for Sarvam AI. The pro
 2. **Efficient Prompt Engineering:**  
    - Custom prompts and context management are used to improve the chatbot’s responses and maintain user engagement.  
 
+## System Diagram
+
+![System Diagram](System_Diagram.png)
+
+> The above diagram illustrates the architecture of the LLM chatbot, showing how different components interact.
+
 ## How the System Handles Scaling
 
 To make the project production-ready, **Dockerization and Kubernetes** were applied. By dockerizing the project, all dependencies and runtime configurations are encapsulated into a portable Docker image.  
